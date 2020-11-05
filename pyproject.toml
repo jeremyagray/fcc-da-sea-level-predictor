@@ -1,0 +1,11 @@
+[tool]
+[tool.poetry]
+authors = ["Jeremy A Gray <jeremy.a.gray@gmail.com>"]
+description = 'FCC DA Sea Level Predictor Project'
+name = "fcc-da-sea-level-predictor"
+version = "0.0.1"
+[tool.poetry.dependencies]
+pandas = "*"
+python = "^3.7"
+scipy = "*"
+matplotlib = ">=3.3.2"

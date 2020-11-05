@@ -1,0 +1,9 @@
+# Emacs.
+*~
+
+# Python.
+*.pyc
+__pycache__
+
+# Generated files.
+*.png
