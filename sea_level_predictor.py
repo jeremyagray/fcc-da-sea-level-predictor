@@ -2,6 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from scipy.stats import linregress
 
+
 def draw_plot():
     # Read data from file
     df = pd.read_csv('epa-sea-level.csv')
@@ -11,7 +12,7 @@ def draw_plot():
         'Lower Error Bound': 'lower',
         'Upper Error Bound': 'upper',
         'NOAA Adjusted Sea Level': 'noaa',
-        }
+    }
     df = df.rename(columns=labels)
 
     dfr = df.loc[df['year'] >= 2000].reset_index()
@@ -31,15 +32,19 @@ def draw_plot():
     # the line of best fit.  Plot the line of best fit over the top of
     # the scatter plot. Make the line go through the year 2050 to
     # predict the sea level rise in 2050.
-    long_slope, long_int, long_r, long_p, long_error = linregress(x=df['year'], y=df['csiro'])
+    (long_slope, long_int,
+     long_r, long_p, long_error) = linregress(x=df['year'], y=df['csiro'])
     ax.plot(years_long, long_slope * years_long + long_int, label='long')
 
     # Create second line of best fit.
     # Plot a second line of best fit using the data from the year 2000
     # through the most recent year in the dataset, going forward to
     # 2050.
-    short_slope, short_int, short_r, short_p, short_error = linregress(x=dfr['year'], y=dfr['csiro'])
-    ax.plot(years_recent, short_slope * years_recent + short_int, label='recent')
+    (short_slope, short_int,
+     short_r, short_p, short_error) = linregress(x=dfr['year'], y=dfr['csiro'])
+    ax.plot(years_recent,
+            short_slope * years_recent + short_int,
+            label='recent')
     # print(short_slope, short_int, short_r, short_p, short_error)
 
     # Add labels and title
@@ -49,7 +54,7 @@ def draw_plot():
     ax.set_title('Rise in Sea Level')
     ax.set_xlabel('Year')
     ax.set_ylabel('Sea Level (inches)')
-    
+
     # Save the plot.
     fig.savefig('sea_level_plot.png')
 
