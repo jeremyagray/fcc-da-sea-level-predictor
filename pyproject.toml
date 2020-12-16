@@ -1,20 +1,34 @@
 [tool]
 
+[tool.isort]
+
+ensure_newline_before_comments = true
+force_single_line = true
+include_trailing_comma = true
+line_length = 88
+multi_line_output = 3
+use_parentheses = true
+
 [tool.poetry]
 
 authors = ["Jeremy A Gray <jeremy.a.gray@gmail.com>"]
 description = 'FCC DA Sea Level Predictor Project'
 name = "fcc-da-sea-level-predictor"
-version = "0.1.0"
+version = "0.1.1"
 
 [tool.poetry.dependencies]
 
 matplotlib = "^3.3"
 pandas = "*"
-python = "^3.7"
+python = "^3.8"
 scipy = "*"
 
 [tool.poetry.dev-dependencies]
+
+black = { version = "*", allow-prereleases = true }
+isort = "^5.6"
+pre-commit = "^2.9"
 pytest = "^6.1"
+pytest-black = "^0.3"
 pytest-cov = "^2.10"
 pytest-flake8 = "^1.0"
